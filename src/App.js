@@ -5,7 +5,7 @@ import MovieCard from "./MovieCard";
 import "./App.css";
 import SearchIcon from "./search.svg";
 
-const API_URL = "http://www.omdbapi.com?apikey=ac41c6b0";
+const API_URL = "https://www.omdbapi.com?apikey=ac41c6b0";
 
 const movie1 = {
   Title: "A Clockwork Orange",

@@ -1,12 +1,15 @@
 import React from "react";
 
+// Functional component for rendering a movie card
 const MovieCard = ({ movie }) => {
   return (
     <div className="movie">
+      {/* Display movie year */}
       <div>
         <p>{movie.Year}</p>
       </div>
 
+      {/* Display movie poster, fallback to a placeholder if not available */}
       <div>
         <img
           src={
@@ -18,6 +21,7 @@ const MovieCard = ({ movie }) => {
         />
       </div>
 
+      {/* Display movie type and title */}
       <div>
         <span>{movie.Type}</span>
         <h3>{movie.Title}</h3>

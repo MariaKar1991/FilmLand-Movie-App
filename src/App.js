@@ -7,6 +7,7 @@ import SearchIcon from "./search.svg";
 
 const API_URL = "https://www.omdbapi.com?apikey=ac41c6b0";
 
+// Sample movie data (not being used currently)
 const movie1 = {
   Title: "A Clockwork Orange",
   Year: "1971",
@@ -17,17 +18,24 @@ const movie1 = {
 };
 
 const App = () => {
+  // State to manage the search term
   const [searchTerm, setSearchTerm] = useState("");
+  // State to store the list of movies
   const [movies, setMovies] = useState([]);
 
+  // useEffect to fetch movies on component mount
   useEffect(() => {
+    // Initial search with a default term ("Clockwork Orange")
     searchMovies("Clockwork Orange");
   }, []);
 
+  // Function to fetch movies based on the search term
   const searchMovies = async (title) => {
+    // Fetch movies from the OMDB API
     const response = await fetch(`${API_URL}&s=${title}`);
+    // Parse the response JSON
     const data = await response.json();
-
+    // Update the movies state with the search results
     setMovies(data.Search);
   };
 
@@ -35,6 +43,7 @@ const App = () => {
     <div className="app">
       <h1>FilmLand</h1>
 
+      {/* Search bar with input and search icon */}
       <div className="search">
         <input
           placeholder="Search for movies"
@@ -48,8 +57,10 @@ const App = () => {
         />
       </div>
 
+      {/* Display movies or a message if no movies found */}
       {movies?.length > 0 ? (
         <div className="container">
+          {/* Map through movies and render MovieCard for each */}
           {movies.map((movie) => (
             <MovieCard key={movie.imdbID} movie={movie} />
           ))}
